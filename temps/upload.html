@@ -1,0 +1,76 @@
+<ion-header-bar align-title="center" style="background-color: #F521A2 ">
+
+	<h1 style="color: white"  class="title">iBabyLife</h1>
+	<div  class="buttons">
+		<button style="color: white" class="button icon-right button-icon icon ion-home" ng-click="home()">
+			Main menu
+		</button>
+
+	</div>
+</ion-header-bar>
+<ion-content>
+
+	<div style="padding: 10px;">
+		<div class="item item-body" style="text-align: center" >
+			<ion-slide-box delegate-handle="theSlider" style="width: 300px;margin: auto" >
+				<ion-slide ng-repeat="image in images" >
+					<div class="box eventImage" >
+						<img style="background-image: url('{{image}}')" ng-click="checkImagesSize() ? show($index) : console.log('fail')" class="eventImgs thumb button" id="kep" >
+					</div>
+				</ion-slide>
+			</ion-slide-box>
+			<h5> {{images.length}}/10 </h5>
+		</div>
+
+		<div class="list">
+			<form id="newEvent">
+
+				<label class="item item-input">
+					<input type="text" ng-model="data.message" id="megjegyzes" placeholder="Message..."/>
+				</label>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Milestone?
+					</div>
+					<select ng-model="data.milestone" >
+						<option selected=""></option>
+						<option ng-if='kor(data.album.albumDate)<=1 || kor(data.album.albumDate)==2' ng-repeat="milestone in egyketto" >{{data.album.albumName}} {{milestone}}</option>
+						<option ng-if='kor(data.album.albumDate)==3 || kor(data.album.albumDate)==4' ng-repeat="milestone in haromnegy" >{{data.album.albumName}} {{milestone}}</option>
+						<option ng-if='kor(data.album.albumDate)==5 || kor(data.album.albumDate)==6' ng-repeat="milestone in othat" >{{data.album.albumName}} {{milestone}}</option>
+						<option ng-if='kor(data.album.albumDate)==7 || kor(data.album.albumDate)==8' ng-repeat="milestone in hetnyolc" >{{data.album.albumName}} {{milestone}}</option>
+						<option ng-if='kor(data.album.albumDate)==9 || kor(data.album.albumDate)==10' ng-repeat="milestone in kilenctiz" >{{data.album.albumName}} {{milestone}}</option>
+						<option ng-if='kor(data.album.albumDate)==11 || kor(data.album.albumDate)>=12' ng-repeat="milestone in tizenegyketto" >{{data.album.albumName}} {{milestone}}</option>
+
+					</select> </label>
+
+				<label class="item item-input item-select" ng-if ="!albumID && albums.length > 1">
+					<div class="input-label">
+						Which album?
+					</div> <select ng-model="data.album"  ng-options="album.albumName for album in albums"></select></label>
+			</form>
+		</div>
+
+		<button  ng-if='!mentve && !uploading && images.length < 10'   class="button button-block button-light icon ion-plus-round" ng-click="plusz1Image()">
+			1 picture
+		</button>
+		<button  ng-if='!mentve && !uploading'  class="button button-block button-light icon ion-bookmark" ng-click="saveEvent()">
+			Save
+		</button>
+
+		<button ng-if='mentve || uploading' class="button button-block button-light icon ion-android-camera" data-ng-click="takePic()">
+			New event
+		</button>
+		<button ng-if='uploading' class="button button-block button-light icon ion-upload" >
+			The uploading of the event is under process.
+		</button>
+		<button ng-if='mentve' class="button button-block button-pink icon ion-checkmark" >
+			Event saved
+		</button>
+		<button ng-if='mentve && facebookshare' class="button button-block button-positive icon ion-social-facebook" ng-click="facebookshareEvent(shareID)">
+			Facebook share
+		</button>
+
+	</div>
+
+</ion-content>

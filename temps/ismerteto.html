@@ -1,0 +1,57 @@
+<style>
+	/* tutoriál css */
+
+	.slider {
+
+		width: 100%;
+		height: 100vh;
+	}
+	.slider img {
+
+		width: 70%;
+		bottom: 0px;
+	}
+
+	p.info {
+		text-align: center;
+	}
+
+	.arrow {
+		color: black;
+		font-size: 40px;
+		position: fixed;
+		top: 45%;
+	}
+
+	.arrowl {
+		left: 0;
+	}
+
+	.arrowr {
+		right: 0;
+	}
+
+</style>
+
+<ion-header-bar align-title="center" style="background-color: #F521A2 ">
+	<div class="buttons">
+		<button style="color: white" class="button button-icon icon-left  ion-arrow-left-c" ng-click="back()">
+			back
+		</button>
+	</div>
+	<h1 style="color: white"  class="title">iBabyLife</h1>
+</ion-header-bar>
+<ion-content>
+
+	<div style="text-align: center;margin-top: 2%">
+		<img ng-src="{{slide.src}}" style="width: 75%;" />
+		<p class="info">
+			{{slide.msg}}
+		</p>
+
+	</div>
+
+	<button  ng-if="slideIndex > 1" style="border: none" ng-click="previous()" class="arrow arrowl ion-arrow-left-c transparent"><i   ></i></button>
+	<button ng-if="slideIndex < aImages.length-1" style="border: none" ng-click="next()" class="arrow arrowr ion-arrow-right-c transparent"><i    ></i></button>
+
+</ion-content>

@@ -1,0 +1,84 @@
+<ion-header-bar align-title="center" style="background-color: #F521A2 ">
+	<div class="buttons">
+		<button style="color: white" class="button button-icon icon ion-arrow-left-c" ng-click="home()">
+			Back
+		</button>
+	</div>
+	<h1 style="color: white"  class="title">iBabyLife</h1>
+</ion-header-bar>
+<ion-content style="padding: 10px">
+
+	<button class="button button-block button-pink">
+		{{fotoalbum.albumName}} photo album
+	</button>
+	<div class="item item-text-wrap" >
+		Please choose the start and the end date to create a free online album. Choose the number of the photos to be in it! The iBabyLife application will use pictures from the specified period  and create a new free photo album to share online from the {{fotoalbum.albumName}} album.
+		You  can see the album and share it with your friends by using the <i  class="icon ion-gear-a"></i> button next to the album.
+
+
+	</div>
+
+	<label class="item item-input"><span  class="input-label">From ?</span>
+		<input onchange="angular.element(this).scope().albumFromDateChanged(this)" type="text" id="albumFromDate" ng-model="data.albumFromDate"   class="date i-txt" />
+	</label>
+	<label class="item item-input"><span  class="input-label">To ?</span>
+		<input onchange="angular.element(this).scope().albumToDateChanged(this)" type="text" id="albumToDate" ng-model="data.albumToDate"  class="date i-txt" />
+	</label>
+	<div class="card" >
+
+		<button ng-if="!photoAlbum20"  class="button button-block button-light icon ion-images" ng-click="newPhotoAlbum(20)" >
+			Photo album from 20 pictures
+		</button>
+
+		<div ng-if="photoAlbum20" class="row" style="margin: 0;padding: 0" >
+			<div class="col col-80" style="margin: 0;padding: 0">
+				<button  class="button button-block button-light icon ion-ios7-compose-outline" >
+					Photo album from 20 pictures <i style="color: green" class="icon ion-checkmark"></i>
+				</button>
+			</div>
+			<div  class="col col-20" style="margin: 0;padding: 0">
+				<button  class="button button-block button-light icon ion-gear-a" ng-click="show(20)"></button>
+			</div>
+		</div>
+
+		<button ng-if="!photoAlbum50"  class="button button-block button-light icon ion-images" ng-click="newPhotoAlbum(50)" >
+			Photo album from 50 pictures
+		</button>
+		<div ng-if="photoAlbum50" class="row" style="margin: 0;padding: 0">
+			<div class="col col-80" style="margin: 0;padding: 0">
+				<button  class="button button-block button-light icon ion-ios7-compose-outline"  >
+					Photo album from 50 pictures <i ng-if="photoAlbum50" style="color: green" class="icon ion-checkmark"></i>
+				</button>
+			</div>
+			<div  class="col col-20" style="margin: 0;padding: 0">
+				<button  class="button button-block button-light icon ion-gear-a" ng-click="show(50)" ></button>
+			</div>
+		</div>
+
+		<button ng-if="!photoAlbum80"  class="button button-block button-light icon ion-images" ng-click="newPhotoAlbum(80)" >
+			Photo album from 80 pictures
+		</button>
+		<div ng-if="photoAlbum80" class="row" style="margin: 0;padding: 0">
+			<div class="col col-80" style="margin: 0;padding: 0">
+				<button  class="button button-block button-light icon ion-ios7-compose-outline"  >
+					Photo album from 80 pictures <i ng-if="photoAlbum80" style="color: green" class="icon ion-checkmark"></i>
+				</button>
+			</div>
+			<div  class="col col-20" style="margin: 0;padding: 0">
+				<button  class="button button-block button-light icon ion-gear-a" ng-click="show(80)" ></button>
+			</div>
+		</div>
+	</div>
+
+	<!--
+	<div style="padding-top : 10px" class="card">
+	<div class="item item-text-wrap">
+	A fotóalbum elkészült. <a style="color:  #F521A2" ng-click="linkMegnyitas(photoAlbumUrl)">Ezen</a> a linken tekinthető meg .
+	</div>
+	<button id="facebook" ng-click="facebookShare(photoAlbumUrl)" class="button button-block button-positive icon ion-social-facebook" >
+	Megosztás
+	</button>
+	-->
+	</div>
+
+</ion-content>

@@ -1,0 +1,112 @@
+<style>
+	.kepDiv {
+		margin: 1em 0;
+		height: 100%;
+		width: 100%;
+		
+		position: relative;
+		
+	}
+	img {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		 
+	}
+	.filterDiv {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+	.filterTitle {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 90px;
+		width: 100%;
+		margin: 0 auto;
+		border: none;
+	}
+	.filterTitle a {
+		color: #FFFFFF;
+	}
+
+</style>
+
+<ion-header-bar align-title="center" style="background-color: #F521A2 ">
+	<div class="buttons">
+		<button style="color: white" class="button button-icon icon-left  ion-arrow-left-c" ng-click="back()">
+			Back
+		</button>
+	</div>
+	<h1 style="color: white"  class="title">iBabyLife</h1>
+	<div class="buttons">
+		<button style="color: white" class="button button-icon  icon-right ion-arrow-right-c" ng-click="cont()">
+			Next
+		</button>
+	</div>
+</ion-header-bar>
+
+<div class="kepDiv card" style="max-width: 1920px" >
+	<img  id="originalPhoto" class="card" style="max-width: 1920px" />
+</div>
+<button class="button filterTitle button-block button-light transparent" >
+
+	<a class="item-icon-left item-icon-right" > <i class="icon ion-arrow-left-c"></i> Select a filter <i class="icon ion-arrow-right-c"></i> </a>
+
+</button>
+
+<ion-scroll direction="x" class="wide-as-needed filterDiv card">
+	<section id="filterButtons">
+
+		<div id="reset" class="filter button" >
+			<div class="filter-tag">
+
+			</div>
+		</div>
+		<div id="fluorescent" class="filter button" >
+			<div class="filter-tag">
+
+			</div>
+		</div>
+		<div id="nostalgia" class="filter button">
+			<div class="filter-tag">
+
+			</div>
+		</div>
+		<div id="phykos" class="filter button">
+			<div class="filter-tag">
+
+			</div>
+		</div>
+		<div id="lotus" class="filter button">
+			<div class="filter-tag">
+
+			</div>
+		</div>
+		<div id="memphis" class="filter button">
+			<div class="filter-tag">
+
+			</div>
+		</div>
+		<div id="deutlich" class="filter button" >
+			<div class="filter-tag">
+
+			</div>
+		</div>
+		<div id="sumie" class="filter button" >
+			<div class="filter-tag" >
+
+			</div>
+		</div>
+
+	</section>
+</ion-scroll>

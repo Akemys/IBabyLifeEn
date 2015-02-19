@@ -1,0 +1,43 @@
+<style>
+	img {
+		width: 100%;
+	}
+	.inf {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+	}
+</style>
+
+<ion-header-bar align-title="center" style="background-color: #F521A2 ">
+	<div class="buttons">
+		<button style="color: white" class="button button-icon icon ion-arrow-left-c" ng-click="home()">
+			{{honap(event.eventDate)}}
+		</button>
+	</div>
+	<h1 style="color: white"  class="title"></h1>
+	<div class="buttons">		
+		<button style="color: white" class="button button-icon icon ion-trash-b" ng-click="deleteEvent()"></button>
+	</div>
+</ion-header-bar>
+
+<ion-content style=" padding: 10px">
+
+	<div class="list card">
+
+		<div class="item item-image" ng-repeat="kep in event.kepek">
+			<img ng-src="http://mobileapps.fekiwebstudio.hu/ibabylife/image.php?image={{kep}}">
+		</div>
+
+	</div>
+
+</ion-content>
+
+<div class='inf'>
+	<div ng-if="event.eventMilestone!='undefined'" class="item item-text-wrap" style="text-align: center;margin: 0px;padding: 2px;border: none">
+		{{event.eventMilestone}}
+	</div>
+	<div ng-if="event.eventMessage!='undefined'" class="item item-text-wrap" style="text-align: center;margin: 0px;padding: 10px;border: none">
+		{{event.eventMessage}}
+	</div>
+</div>

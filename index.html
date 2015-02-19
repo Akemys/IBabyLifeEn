@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />
+		<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+		<link href="lib/ionic/css/ionicons.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+
+		<script>
+			function checkConnection() {
+				var networkState = navigator.network.connection.type;
+
+				var states = {};
+				states[Connection.UNKNOWN] = 'Unknown connection';
+				states[Connection.ETHERNET] = 'Ethernet connection';
+				states[Connection.WIFI] = 'WiFi connection';
+				states[Connection.CELL_2G] = 'Cell 2G connection';
+				states[Connection.CELL_3G] = 'Cell 3G connection';
+				states[Connection.CELL_4G] = 'Cell 4G connection';
+				states[Connection.NONE] = 'No network connection';
+
+				if (networkState == Connection.UNKNOWN || networkState == Connection.NONE) {
+					return false;
+				} else {
+					return true;
+				}
+			};
+
+		</script>
+
+		<!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+		<link href="css/ionic.app.css" rel="stylesheet">
+		-->
+
+		<!-- ionic/angularjs js -->
+		<script src="lib/ionic/js/ionic.bundle.js"></script>
+
+		<!-- jquery js -->
+		<script src="js/jquery.min.js"></script>
+
+		<!-- Mobiscroll JS and CSS Includes -->
+
+		<!-- Mobiscroll JS and CSS Includes -->
+
+		<script src="js/mobiscroll.core.js"></script>
+		<script src="js/mobiscroll.widget.js"></script>
+		<script src="js/mobiscroll.scroller.js"></script>
+
+		<script src="js/mobiscroll.util.datetime.js"></script>
+		<script src="js/mobiscroll.datetimebase.js"></script>
+		<script src="js/mobiscroll.datetime.js"></script>
+		<script src="js/mobiscroll.select.js"></script>
+		<script src="js/mobiscroll.listbase.js"></script>
+		<script src="js/mobiscroll.image.js"></script>
+		<script src="js/mobiscroll.treelist.js"></script>
+
+		<script src="js/mobiscroll.widget.android.js"></script>
+		<script src="js/mobiscroll.widget.android-holo.js"></script>
+		<script src="js/mobiscroll.widget.ios-classic.js"></script>
+		<script src="js/mobiscroll.widget.ios.js"></script>
+		<script src="js/mobiscroll.widget.jqm.js"></script>
+		<script src="js/mobiscroll.widget.sense-ui.js"></script>
+		<script src="js/mobiscroll.widget.wp.js"></script>
+
+		<script src="js/mobiscroll.android-holo-light.js"></script>
+		<script src="js/mobiscroll.wp-light.js"></script>
+
+		<script src="js/i18n/mobiscroll.i18n.cs.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.de.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.en-UK.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.es.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.fa.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.fr.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.hu.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.it.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.ja.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.nl.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.no.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.pl.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.pt-BR.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.pt-PT.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.ro.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.ru.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.ru-UA.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.sk.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.sv.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.tr.js"></script>
+		<script src="js/i18n/mobiscroll.i18n.zh.js"></script>
+
+		<link href="css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.icons.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.android.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.android-holo.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.ios-classic.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.ios.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.jqm.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.sense-ui.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.widget.wp.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.android.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.android-holo.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.ios-classic.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.jqm.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.sense-ui.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.scroller.wp.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.image.css" rel="stylesheet" type="text/css" />
+
+		<link href="css/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobiscroll.wp-light.css" rel="stylesheet" type="text/css" />
+
+		<!-- cordova script (this will be a 404 during development) -->
+		<script src="phonegap.js"></script>
+
+		<!--csak fejlesztésre kell
+		<script src="phonegap.js"></script>
+		<script src="js/phonegap.js"></script>
+		-->
+
+		<!-- third party js -->
+		<script src="js/hello.js"></script>
+
+		<!-- your app's js -->
+		<script src="js/sync.js"></script>
+		<script src="js/app.js"></script>
+
+		<script src="js/filterous.js"></script>
+		<script src="js/filterousEffects.js"></script>
+		<script src="lib/angular-intercom.js"></script>
+
+		<style>
+			#intercom-launcher {
+				display: none;
+			}
+		</style>
+	</head>
+	<body ng-app="starter">
+
+		<ion-pane>
+			<div ui-view  class='view'></div>
+		</ion-pane>
+
+	</body>
+
+</html>
