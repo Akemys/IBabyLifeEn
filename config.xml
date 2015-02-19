@@ -6,7 +6,7 @@ xmlns:gap = "http://phonegap.com/ns/1.0"
 id        = "com.fwstudio.iBabyLifeEng"
 version   = "1.0.4">
 
-	<name>iBabyLife</name>
+	<name>iBabyLifeEng</name>
 	<author  email="info@fwmail.hu">http://www.fwstudio.hu</author>
 
 	<!--
