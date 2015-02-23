@@ -88,7 +88,7 @@ version   = "1.0.0">
 	<!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
 	<gap:plugin name="de.appplant.cordova.plugin.badge" version="0.6.0" />
 	<gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io" />
-	<gap:plugin name="com.adobe.plugins.gaplugin" version="2.3.1" />
+	<gap:plugin name="com.adobe.plugins.gaplugin"  />
 	<gap:plugin name="com.bez4pieci.cookies" version="0.0.1" />
 
 	<!--

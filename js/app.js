@@ -293,9 +293,7 @@ angular.module('starter', ['ionic','ngIntercom'])
   	$rootScope.user.name = 'Kiss Béla';
 	*/
 	
-	var gaPlugin;
-	gaPlugin = window.plugins.gaPlugin;
-    gaPlugin.init(successHandler, errorHandler, "UA-60026567-1", 10);
+	
     
    
 	
@@ -2876,7 +2874,7 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 					if(online(facebookonline)){
 						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : Facebook", new Date() , 1);
 					}else if(online(googleonline)){
-						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "bejelentkezett : Google", new Date() , 1);
+						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : Google", new Date() , 1);
 					}
 					
 					
