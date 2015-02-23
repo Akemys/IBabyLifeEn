@@ -173,6 +173,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 						$rootScope.network = 'facebook';
 						window.localStorage.setItem("username", $rootScope.user.name);
 						window.localStorage.setItem("email", $rootScope.user.email);
+						gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Beregisztrált : Facebook", new Date().toString() , 1);
 						$state.go('home');
 					});
 				});
@@ -214,6 +215,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 	          $rootScope.network = 'google';
 	          window.localStorage.setItem("username", $rootScope.user.name );
 			  window.localStorage.setItem("email",  $rootScope.user.email);	    
+			  gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Beregisztrált : Google", new Date().toString() , 1);
 	          $state.go('home');
 	        });
 	      });
@@ -2104,9 +2106,10 @@ function($scope,$ionicLoading,$ionicActionSheet, $rootScope, $ionicPopup,$ionicP
 				        type: 'button-pink',
 				        onTap: function(e) {
 				          window.localStorage.setItem("ibabylifeusername", data.vezeteknev+' '+data.keresztnev);
-				          window.localStorage.setItem("ibabylifeemail", data.email);	          
-				          
-				          
+				          window.localStorage.setItem("ibabylifeemail", data.email);
+				         
+						  gaPlugin.trackEvent( successHandler, errorHandler, data.vezeteknev+' '+data.keresztnev+" "+data.email, "Bejelentkezett : iBabyLife", new Date().toString() , 1);
+					 
 							console.log(data);
 							$rootScope.user =  {
 								name : data.vezeteknev+' '+data.keresztnev,
@@ -2153,6 +2156,7 @@ function($scope,$ionicLoading,$ionicActionSheet, $rootScope, $ionicPopup,$ionicP
 				$scope.errorJelszo = data.errors.jelszo;
 
 			} else {
+				gaPlugin.trackEvent( successHandler, errorHandler, $( "#vezeteknev" ).val()+" "+$( "#keresztnev" ).val()+" "+$( "#email" ).val(), "Beregisztrált : iBabyLife", new Date().toString() , 1);
 				var myPopup = $ionicPopup.show({
 				    title: 'Sucessfully registration.',
 				    template: $rootScope.loc.ibabyliferegpopupText,
@@ -2881,9 +2885,9 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 						email : localStorage.getItem('email')
 					};
 					if(online(facebookonline)){
-						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : Facebook", new Date() , 1);
+						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : Facebook", new Date().toString() , 1);
 					}else if(online(googleonline)){
-						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : Google", new Date() , 1);
+						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : Google", new Date().toString() , 1);
 					}
 					
 					
@@ -2895,7 +2899,7 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 						name : localStorage.getItem('ibabylifeusername'),
 						email : localStorage.getItem('ibabylifeemail')
 					};
-					gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : iBabyLife", new Date() , 1);
+					gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : iBabyLife", new Date().toString() , 1);
 					$rootScope.$apply($rootScope.user);
 					$ionicLoading.hide();
 					$state.go('home');
