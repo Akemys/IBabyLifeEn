@@ -424,7 +424,10 @@ angular.module('starter', ['ionic','ngIntercom'])
 
 
 		
-
+	$scope.openBanner = function(link){
+		$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Rányom a reklámra : "+link, new Date().toString() , 1);	
+		var appInBrowser = window.open(link, '_blank', 'location=yes,enableViewportScale=yes');
+	};
 		
 
 
@@ -446,8 +449,10 @@ angular.module('starter', ['ionic','ngIntercom'])
 		
 		if (saveImages) {
 			window.localStorage.setItem("saveImages", 1);
+			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Képek mentése telóra : igen", new Date().toString() , 1);	
 		} else {
 			window.localStorage.setItem("saveImages", 0);
+			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Képek mentése telóra : nem", new Date().toString() , 1);	
 		}
 
 	};
@@ -472,7 +477,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 				text : '<b>Yes</b>',
 				type : 'button-pink',
 				onTap : function(e) {
-
+					$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Kijelentkezik", new Date().toString() , 1);	
 					window.cookies.clear(function() {					    
 					});
 					window.localStorage.clear();
@@ -548,7 +553,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 					text : '<b>Send</b>',
 					type : 'button-pink',
 					onTap : function(e) {
-
+						$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Értékelés : látvány="+$scope.latvany+",használhatóság="+$scope.hasznalhatosag+",hasznossag"+$scope.hasznossag, new Date().toString() , 1);	
 						$http.post('http://mobileapps.fekiwebstudio.hu/ibabylife/apprate.php', {
 							latvany : $scope.latvany,
 							hasznalhatosag : $scope.hasznalhatosag,
@@ -594,6 +599,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 	
 	$scope.shareApp = function() {
 		if (checkConnection()) {
+			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Megosztja az alkalmazást", new Date().toString() , 1);	
 			window.plugins.socialsharing.share(null, null, null, 'https://play.google.com/store/apps/details?id=com.fwstudio.iBabyLife');
 			
 		
@@ -617,6 +623,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 	$scope.shareWeb = function() {
 
 		if (checkConnection()) {
+			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Megosztja a weboldalt", new Date().toString() , 1);	
 			var appInBrowser = window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.ibabylife.com/', '_blank', 'location=yes,enableViewportScale=yes');
 
 			appInBrowser.addEventListener('loadstart', function(event) {
@@ -778,6 +785,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 			            //don't allow the user to close unless he enters wifi password
 			            e.preventDefault();
 			          } else {
+			          		
 			          	  $scope.feedbackData = {};
 			          	  $scope.feedbackData.message = $scope.data.feedback;
 			          	  $scope.feedbackData.deviceModel = device.model;
@@ -786,7 +794,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 			          	  $scope.feedbackData.email = $rootScope.user.email;
 			          	  $scope.feedbackData.name = $rootScope.user.name;
 			          	  
-			          	  
+			          	  $rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Visszajelzés : "+$scope.feedbackData.message, new Date().toString() , 1);	
 			          	  
 				          $http.post('http://mobileapps.fekiwebstudio.hu/ibabylife/feedback.php', $scope.feedbackData).success(function(data, status, headers, config) {			
 									
@@ -1157,6 +1165,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 		$ionicLoading.show({
 				template : '<i class="icon ion-looping"></i> Filtering...'
 		});
+		$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Képre szürő : "+e, new Date().toString() , 1);	
 		$timeout(function() {
 	       prepFilterEffect(e);		
    		}, 250);
@@ -1295,7 +1304,8 @@ angular.module('starter', ['ionic','ngIntercom'])
 
 	// Call this functions if you need to manually control the slides
 	
-  
+  	$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Megnézi az ismertetőt", new Date().toString() , 1);	
+	
   	
 	
 
@@ -1489,7 +1499,7 @@ function($scope, $rootScope,$ionicLoading,$ionicActionSheet,$ionicScrollDelegate
 				      $scope.shareData.albumDate = $scope.album[0].albumDate;
 				      $scope.shareData.albumSex = $scope.album[0].albumSex;
 				      
-					  
+					  $rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Album megosztás : kivel="+$scope.shareData.shareemail+" mit="+$scope.shareData.albumName, new Date().toString() , 1);	
 		          	  	          	  
 			          $http.post('http://mobileapps.fekiwebstudio.hu/ibabylife/shareen.php', $scope.shareData).success(function(data, status, headers, config) {			
 		
@@ -1930,7 +1940,7 @@ function($scope,$ionicLoading,$ionicActionSheet, $rootScope, $ionicPopup,$ionicP
 
 		if ($scope.data.albumFromDate != '' && $scope.data.albumToDate != '') {
 		
-			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Új fotóalbum : "+db+"-os,", new Date().toString() , 1);	
+			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Új fotóalbum : "+db+" darabos,", new Date().toString() , 1);	
 			$http.post('http://mobileapps.fekiwebstudio.hu/ibabylife/newPhotoAlbum.php?imagesSize='+db+'&albumName=' + $scope.fotoalbum.albumName + '&albumOwner=' + $scope.fotoalbum.albumOwner +'&albumOwnerName=' +  $rootScope.user.name + '&fromDate=' + $scope.data.albumFromDate + '&toDate=' + $scope.data.albumToDate + '').success(function(data) {
 				$ionicLoading.hide();
 				if(data['success'] == false){		
@@ -2388,7 +2398,8 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 			$scope.data.eventImg9 = $scope.images[8];
 			$scope.data.eventImg10 = $scope.images[9];
 			$scope.data.eventDate = currentDate() + " " + currentTime();
-
+			
+		
 			var azEventId;
 			dao.newEVent($scope.data,1, function(id) {
 				$scope.uploading = true;
@@ -2486,6 +2497,9 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 				$scope.eventData.albumSex = $scope.album[0].albumSex;
 				$scope.eventData.saveImages = localStorage.getItem("saveImages");
 				
+				
+				$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Új esemény : album="+$scope.eventData.albumName+", képekszáma="+$rootScope.images.length, new Date().toString() , 1);	
+
 			
 				$http.post('http://mobileapps.fekiwebstudio.hu/ibabylife/newEsemeny.php', $scope.eventData).success(function(data, status, headers, config) {			
 		
@@ -2648,6 +2662,9 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 		$rootScope.album = $scope.data.album.id;
 		$rootScope.message = $scope.data.message;
 		$rootScope.milestone = $scope.data.milestone;
+		
+		$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Plusz 1 kép: ez lesz a "+($rootScope.images.length+1)+". kép",new Date().toString() , 1);	
+
 	
 		var options = {
 			destinationType : Camera.DestinationType.DATA_URL,
