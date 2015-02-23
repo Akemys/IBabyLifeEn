@@ -295,18 +295,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 	
 	
     
-   
-	
-	function successHandler(result) {
-		//alert('nativePluginResultHandler - '+result);
-		alert('nativePluginResultHandler: ' + result);
-	}
-
-	function errorHandler(error) {
-		//alert('nativePluginErrorHandler - '+error);
-		alert('nativePluginErrorHandler: ' + error);
-	}
-
+  
 
 	Object.size = function(obj) {
 		var size = 0,
