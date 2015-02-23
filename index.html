@@ -9,24 +9,7 @@
 		<link href="css/style.css" rel="stylesheet">
 
 		<script>
-			alert('indul a script')
-		
-			var gaPlugin;
-			alert('van változó')
-			gaPlugin = window.plugins.gaPlugin;
-			alert('változóba benne van a plugin')
-			gaPlugin.init(successHandler, errorHandler, "UA-60026567-1", 10);
-			alert('lefut a ga init')
-
-			function successHandler(result) {
-				//alert('nativePluginResultHandler - '+result);
-				alert('nativePluginResultHandler: ' + result);
-			}
-
-			function errorHandler(error) {
-				//alert('nativePluginErrorHandler - '+error);
-				alert('nativePluginErrorHandler: ' + error);
-			}
+			
 
 			function checkConnection() {
 				var networkState = navigator.network.connection.type;
