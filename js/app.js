@@ -289,11 +289,11 @@ angular.module('starter', ['ionic','ngIntercom'])
     
     $scope.data = {};  
     
-    /* tesztelés user
+  /* teszt user
     $rootScope.user = {};
     $rootScope.user.email = 'kissbela@gmail.com';
   	$rootScope.user.name = 'Kiss Béla';
-	*/
+*/
 	
 	
     
@@ -378,6 +378,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 			});
 
 		} else {
+			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Belép a mérföldkövekbe : ", new Date().toString() , 1);
 			$state.go('milestone');
 		}
 	}; 
@@ -539,9 +540,9 @@ angular.module('starter', ['ionic','ngIntercom'])
 				
 				title : $rootScope.loc.ertekelesKervePopupTitle,
 				template : '<div>Please support our job with your rate! Rate for the following aspects from 1 to 5 and click on the "Send" button after you finished it.</div> </br>'+
-						   '<table><tr><td>{{loc.ertekelesLatvany}} : </td><td><div ng-click="setLatvany($index)"  ng-repeat="i in getNumber(5) track by $index" ng-class="whatClassIsIt(latvany,$index+1)" class="circleBase">{{$index+1}}</td> </tr>' +
-						   '<tr><td>{{loc.ertekelesHasznal}} : </td><td><div ng-click="setHasznalhatosag($index)"  ng-repeat="i in getNumber(5) track by $index" ng-class="whatClassIsIt(hasznalhatosag,$index+1)" class="circleBase">{{$index+1}}</td> </tr>' +
-						   '<tr><td>{{loc.ertekelesHasznos}} : </td><td><div ng-click="setHasznossag($index)"  ng-repeat="i in getNumber(5) track by $index" ng-class="whatClassIsIt(hasznossag,$index+1)" class="circleBase">{{$index+1}}</td></tr></table>',
+						   '<table><tr><td>{{loc.ertekelesLatvany}} : </td><td><div style="margin-right:4px" ng-click="setLatvany($index)"  ng-repeat="i in getNumber(5) track by $index" ng-class="whatClassIsIt(latvany,$index+1)" class="circleBase">{{$index+1}}</td> </tr>' +
+						   '<tr><td>{{loc.ertekelesHasznal}} : </td><td><div style="margin-right:4px" ng-click="setHasznalhatosag($index)"  ng-repeat="i in getNumber(5) track by $index" ng-class="whatClassIsIt(hasznalhatosag,$index+1)" class="circleBase">{{$index+1}}</td> </tr>' +
+						   '<tr><td>{{loc.ertekelesHasznos}} : </td><td><div style="margin-right:4px" ng-click="setHasznossag($index)"  ng-repeat="i in getNumber(5) track by $index" ng-class="whatClassIsIt(hasznossag,$index+1)" class="circleBase">{{$index+1}}</td></tr></table>',
 				scope : $scope,
 				buttons : [{
 					text : '<b>Send</b>',
@@ -1791,6 +1792,9 @@ function($scope, $rootScope, $ionicPopup,$ionicPlatform, $state, $http, $ionicMo
 			    		albumSex  : $scope.data.albumSex,
 			    		albumOwner : $rootScope.user.email
 			    	};
+			    	
+			    	$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Új gyermek : "+$scope.data.albumName, new Date().toString() , 1);
+			    	
 			    	dao.newAlbum(album,function(){});
 			    	var myPopup = $ionicPopup.show({
 					    title: 'You have successfully created the album.',
@@ -1926,7 +1930,7 @@ function($scope,$ionicLoading,$ionicActionSheet, $rootScope, $ionicPopup,$ionicP
 
 		if ($scope.data.albumFromDate != '' && $scope.data.albumToDate != '') {
 		
-		
+			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Új fotóalbum : "+db+"-os,", new Date().toString() , 1);	
 			$http.post('http://mobileapps.fekiwebstudio.hu/ibabylife/newPhotoAlbum.php?imagesSize='+db+'&albumName=' + $scope.fotoalbum.albumName + '&albumOwner=' + $scope.fotoalbum.albumOwner +'&albumOwnerName=' +  $rootScope.user.name + '&fromDate=' + $scope.data.albumFromDate + '&toDate=' + $scope.data.albumToDate + '').success(function(data) {
 				$ionicLoading.hide();
 				if(data['success'] == false){		

@@ -3,10 +3,10 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
 xmlns:gap = "http://phonegap.com/ns/1.0"
-id        = "com.fwstudio.iBabyLifeEng"
+id        = "com.fwstudio.iBabyLifeWorld"
 version   = "1.0.0">
 
-	<name>iBabyLifeEng</name>
+	<name>iBabyLife World</name>
 	<author  email="info@fwmail.hu">http://www.fwstudio.hu</author>
 
 	<!--
