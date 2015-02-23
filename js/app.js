@@ -2738,19 +2738,7 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 
 .controller('loginCtrl', ['$scope','$rootScope','$ionicPopup','$ionicPlatform','$state','$ionicLoading', 'userService', function($scope, $rootScope, $ionicPopup,$ionicPlatform, $state,$ionicLoading, userService) {
 
-	var gaPlugin;
-	gaPlugin = window.plugins.gaPlugin;
-	gaPlugin.init(successHandler, errorHandler, "UA-60026567-1", 10);
-
-	function successHandler(result) {
-		//alert('nativePluginResultHandler - '+result);
-		alert('nativePluginResultHandler: ' + result);
-	}
-
-	function errorHandler(error) {
-		//alert('nativePluginErrorHandler - '+error);
-		alert('nativePluginErrorHandler: ' + error);
-	}
+	
 
 	
 	
