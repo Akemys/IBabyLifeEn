@@ -9,7 +9,9 @@
 		<link href="css/style.css" rel="stylesheet">
 
 		<script>
-			function onDeviceReady() {
+			document.addEventListener("deviceready", pluginsReady, false);
+		
+			function pluginsReady() {
 
 				alert('indul a script')
 				var gaPlugin;
