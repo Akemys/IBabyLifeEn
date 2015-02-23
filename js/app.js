@@ -282,35 +282,32 @@ angular.module('starter', ['ionic','ngIntercom'])
   };
 
   return service;
-}])
-.constant('INTERCOM_APPID', "q3uevglx")
-.config(function($intercomProvider, INTERCOM_APPID) {
-	// Either include your app_id here or later on boot
-	$intercomProvider.appID(INTERCOM_APPID);
-
-	// you can include the Intercom's script yourself or use the built in async loading feature
-	$intercomProvider.asyncLoading(true)
-})
-
-.controller('homeCtrl',function($scope, $rootScope,$intercom, $timeout,$ionicModal, $ionicSlideBoxDelegate, $state,$ionicPopup,$ionicPlatform,$ionicSideMenuDelegate,$ionicLoading,$http, userService) {
+}]).controller('homeCtrl',function($scope, $rootScope,$intercom, $timeout,$ionicModal, $ionicSlideBoxDelegate, $state,$ionicPopup,$ionicPlatform,$ionicSideMenuDelegate,$ionicLoading,$http, userService) {
     
     
     $scope.data = {};  
     
-  	/* teszt user
+    /* tesztelés user
     $rootScope.user = {};
     $rootScope.user.email = 'kissbela@gmail.com';
   	$rootScope.user.name = 'Kiss Béla';
 	*/
+	
+	var gaPlugin;
+	gaPlugin = window.plugins.gaPlugin;
+    gaPlugin.init(successHandler, errorHandler, "UA-60026567-1", 10);
+    
+   
+	
+	function successHandler(result) {
+		//alert('nativePluginResultHandler - '+result);
+		alert('nativePluginResultHandler: ' + result);
+	}
 
-
-	$scope.intercomUser = {
-		email : $rootScope.user.email,
-		name : $rootScope.user.name,
-		created_at : 1234567890
-	}; 
-
-	$intercom.boot($scope.intercomUser);
+	function errorHandler(error) {
+		//alert('nativePluginErrorHandler - '+error);
+		alert('nativePluginErrorHandler: ' + error);
+	}
 
 
 	Object.size = function(obj) {
@@ -2876,6 +2873,13 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 						name : localStorage.getItem('username'),
 						email : localStorage.getItem('email')
 					};
+					if(online(facebookonline)){
+						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : Facebook", new Date() , 1);
+					}else if(online(googleonline)){
+						 gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "bejelentkezett : Google", new Date() , 1);
+					}
+					
+					
 					$ionicLoading.hide();
 					$state.go('home');
 
@@ -2884,6 +2888,7 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 						name : localStorage.getItem('ibabylifeusername'),
 						email : localStorage.getItem('ibabylifeemail')
 					};
+					gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Bejelentkezett : iBabyLife", new Date() , 1);
 					$rootScope.$apply($rootScope.user);
 					$ionicLoading.hide();
 					$state.go('home');
