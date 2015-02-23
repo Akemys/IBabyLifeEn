@@ -173,7 +173,7 @@ angular.module('starter', ['ionic','ngIntercom'])
 						$rootScope.network = 'facebook';
 						window.localStorage.setItem("username", $rootScope.user.name);
 						window.localStorage.setItem("email", $rootScope.user.email);
-						//gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Beregisztrált : Facebook", new Date().toString() , 1);
+						gaPlugin.trackEvent( successHandler, errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Beregisztrált : Facebook", new Date().toString() , 1);
 						$state.go('home');
 					});
 				});
