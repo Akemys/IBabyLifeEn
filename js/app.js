@@ -2742,11 +2742,11 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 
 	
 	
-	/*
+
 	$ionicLoading.show({
 		template : 'Login..'
 	});	
-    */
+  
 	
 	 	 
 	document.addEventListener("deviceready", onDeviceReady, false);
