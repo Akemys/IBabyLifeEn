@@ -9,19 +9,7 @@
 		<link href="css/style.css" rel="stylesheet">
 
 		<script>
-			var gaPlugin;
-			gaPlugin = window.plugins.gaPlugin;
-			gaPlugin.init(successHandler, errorHandler, "UA-60026567-1", 10);
-
-			function successHandler(result) {
-				//alert('nativePluginResultHandler - '+result);
-				alert('nativePluginResultHandler: ' + result);
-			}
-
-			function errorHandler(error) {
-				//alert('nativePluginErrorHandler - '+error);
-				alert('nativePluginErrorHandler: ' + error);
-			}
+			
 
 			function checkConnection() {
 				var networkState = navigator.network.connection.type;
