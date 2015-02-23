@@ -2757,22 +2757,7 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 	// device APIs are available
 	function onDeviceReady() {
 	
-			alert('indul a script')		
-			var gaPlugin;
-			alert('van változó')
-			gaPlugin = window.plugins.gaPlugin;
-			alert('változóba benne van a plugin')
-			gaPlugin.init(successHandler, errorHandler, "UA-60026567-1", 10);
-			alert('lefut a ga init')
-
-			function successHandler(result) {
-				alert('nativePluginResultHandler - '+result);
-			}
-
-			function errorHandler(error) {
-				alert('nativePluginErrorHandler - '+error);
-			}
-
+			
 		
 	
 	 
