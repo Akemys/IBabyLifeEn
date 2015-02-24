@@ -363,24 +363,10 @@ angular.module('starter', ['ionic','ngIntercom'])
 
 
 	
-	$scope.milestones = function() {
-		if ($scope.albums.length == 0) {
-			var myPopup = $ionicPopup.show({
-				title : 'New album',
-				template : 'You did not created a photo album for your child yet. You could find this function in the main menu.',
-				buttons : [{
-					text : '<b>Ok</b>',
-					type : 'button-pink',
-					onTap : function(e) {
-						$ionicSideMenuDelegate.toggleRight();
-					}
-				}]
-			});
-
-		} else {
+	$scope.milestones = function() {		
 			$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Belép a mérföldkövekbe : ", new Date().toString() , 1);
 			$state.go('milestone');
-		}
+		
 	}; 
 
 
@@ -1165,7 +1151,6 @@ angular.module('starter', ['ionic','ngIntercom'])
 		$ionicLoading.show({
 				template : '<i class="icon ion-looping"></i> Filtering...'
 		});
-		$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Képre szürő : "+e, new Date().toString() , 1);	
 		$timeout(function() {
 	       prepFilterEffect(e);		
    		}, 250);
@@ -1176,11 +1161,16 @@ angular.module('starter', ['ionic','ngIntercom'])
 	
 		
 		var filterButton = getFilterButton(e.target);
+	
 		if (!filterButton)
 			return;
 		
 
 		ApplyEffects[filterButton.id](originalPhoto, 'wepb');
+		
+		$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $rootScope.user.name+" "+$rootScope.user.email, "Képre szürő : "+filterButton.id, new Date().toString() , 1);	
+		
+		
 				
 		if(document.getElementById('originalPhoto').style.display == 'block'){
 			$ionicLoading.hide();	
@@ -2158,6 +2148,7 @@ function($scope,$ionicLoading,$ionicActionSheet, $rootScope, $ionicPopup,$ionicP
 
 			} else {
 				$rootScope.gaPlugin.trackEvent( $rootScope.successHandler, $rootScope.errorHandler, $( "#vezeteknev" ).val()+" "+$( "#keresztnev" ).val()+" "+$( "#email" ).val(), "Beregisztrált : iBabyLife", new Date().toString() , 1);
+				
 				var myPopup = $ionicPopup.show({
 				    title: 'Sucessfully registration.',
 				    template: $rootScope.loc.ibabyliferegpopupText,
@@ -2764,20 +2755,20 @@ function($scope, $rootScope, $timeout, $state,$stateParams, $ionicPopup,$http,$i
 	document.addEventListener("deviceready", onDeviceReady, false);
 	// device APIs are available
 	function onDeviceReady() {
-				alert('indul a script');
+				
 				$rootScope.gaPlugin;
-				alert('van változó');
+				
 				$rootScope.gaPlugin = window.plugins.gaPlugin;
-				alert('változóba benne van a plugin');
+				
 				$rootScope.gaPlugin.init($rootScope.successHandler, $rootScope.errorHandler, "UA-60026567-1", 10);
-				alert('lefut a ga init');
+			
 
 				$rootScope.successHandler = function(result) {
-					alert('nativePluginResultHandler - ' + result);
+					//alert('nativePluginResultHandler - ' + result);
 				};
 
 				$rootScope.errorHandler = function(error) {
-					alert('nativePluginErrorHandler - ' + error);
+					//alert('nativePluginErrorHandler - ' + error);
 				};
 			
 		
