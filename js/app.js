@@ -1761,8 +1761,8 @@ function($scope, $rootScope, $ionicPopup,$ionicPlatform, $state, $http, $ionicMo
 		theme: 'android-holo-light', 
 		display : 'bottom',
 		mode : 'scroller',
-		dateOrder : 'dd mm yy',
-		dateFormat : "dd-mm-yy",		
+		dateOrder : 'yy mm dd',
+		dateFormat : "yy-mm-dd",			
 		maxDate : new Date(),
 		lang : 'en'
 	});
@@ -2043,8 +2043,8 @@ function($scope,$ionicLoading,$ionicActionSheet, $rootScope, $ionicPopup,$ionicP
 		theme : 'android-holo-light',
 		display : 'bottom',
 		mode : 'scroller',
-		dateOrder : 'dd mm yy',
-		dateFormat : "dd-mm-yy",
+		dateOrder : 'yy mm dd',
+		dateFormat : "yy-mm-dd",	
 		minDate : new Date($scope.fotoalbum.albumDate),
 		maxDate : new Date(),
 		lang : 'en'
@@ -2055,8 +2055,8 @@ function($scope,$ionicLoading,$ionicActionSheet, $rootScope, $ionicPopup,$ionicP
 		theme : 'android-holo-light',
 		display : 'bottom', 
 		mode : 'scroller',
-		dateOrder : 'dd mm yy',
-		dateFormat : "dd-mm-yy",
+		dateOrder : 'yy mm dd',
+		dateFormat : "yy-mm-dd",	
 		minDate : new Date($scope.fotoalbum.albumDate),
 		maxDate : new Date(),
 		lang : 'en'
